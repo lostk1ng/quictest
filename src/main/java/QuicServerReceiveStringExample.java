@@ -39,7 +39,7 @@ public final class QuicServerReceiveStringExample {
         SelfSignedCertificate selfSignedCertificate = new SelfSignedCertificate();
         QuicSslContext context = QuicSslContextBuilder.forServer(
                 selfSignedCertificate.privateKey(), null, selfSignedCertificate.certificate())
-                .applicationProtocols("http/0.9").keylog(true).build();
+                .applicationProtocols("http/0.9", "h3").keylog(true).build();
         NioEventLoopGroup group = new NioEventLoopGroup(1);
         ChannelHandler codec = new QuicServerCodecBuilder().sslContext(context)
                 .maxIdleTimeout(5000, TimeUnit.MILLISECONDS)
