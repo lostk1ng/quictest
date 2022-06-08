@@ -37,6 +37,7 @@ public final class QuicServerReceiveStringExample {
 
     public static void main(String[] args) throws Exception {
         SelfSignedCertificate selfSignedCertificate = new SelfSignedCertificate();
+        // ALPN: https://datatracker.ietf.org/doc/html/rfc7301
         QuicSslContext context = QuicSslContextBuilder.forServer(
                 selfSignedCertificate.privateKey(), null, selfSignedCertificate.certificate())
                 .applicationProtocols("http/0.9", "h3").keylog(true).build();
